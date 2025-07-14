@@ -20,14 +20,8 @@ def read_file_to_dict(filename):
 #el output {'producto1': [100.0, 150.0], 'producto2': [200.0, 100.0], 'producto3': [50.0]}
 
 
-def process_dict(data):
-    for producto in sorted(data.keys()):
-        ventas = data[producto]
+def process_dict(dict1):
+    for producto, ventas in dict1.items():
         total = sum(ventas)
-        if len(ventas) > 0:
-            promedio = total / len(ventas)
-            total_str = "{:.2f}".format(total)
-            promedio_str = "{:.2f}".format(promedio)
-            print(producto + ": ventas totales $" + total_str + ", promedio $" + promedio_str)
-        else:
-            print(producto + ": no hay ventas registradas")
+        promedio = total / len(ventas)
+        print(f"{producto}: ventas totales ${total:.2f}, promedio ${promedio:.2f}")
